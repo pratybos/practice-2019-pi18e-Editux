@@ -1,3 +1,7 @@
 # practice-2019-pi18e-Editux
-practice-2019-pi18e-Editux created by GitHub Classroom
-jnbhjbhjbh
+
+
+Fullname: Vardas, pavardė, grupė: Edita Komarova, PI18E 
+
+Software used: Programinė įranga: Visual Studio 2017
+
