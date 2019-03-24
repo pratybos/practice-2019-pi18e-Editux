@@ -1,0 +1,115 @@
+struct Character{
+	int hp;
+};
+int main(){
+	int event, secondary_event, start,choice;
+	struct Character c1 = { 30 }; //setting up character's health
+	printf("********** WELCOME TO THE FOREST**********\n");
+	printf("Now it's September it's almost time to gather mushrooms!\n");
+	printf(" But you must remember that everything can happen in the forest.\n");
+	printf("Would you like to go to the forest?\n");
+	printf("Press 1 to start!\n");
+	scanf_s("%d", &start);
+	system("cls");
+
+	switch (start) {
+	case 1:
+		do {
+		Back:
+			srand(time(0)); // kad nemestu vel ta serial killer ir butu game over
+			event = rand() % 6;
+
+			switch (event) {
+			case 1: 
+				printf("You found nothing!\n");
+				printf("Would you like to continue exploring the forest?\n ");
+				printf("Press 1 if yes, Press 0 if no.\n");
+				scanf_s("%d", &choice);
+
+				if (choice == 1) {
+					goto Back;
+
+				}
+
+				break;
+			case 2:
+				c1.hp = c1.hp + 5;
+				printf("You found mushrooms! You gained additional 5 hp\n");
+				printf("Now you have %d health \n", c1.hp);
+				printf("Would you like to continue to exploring the forest?\n");
+				printf("Press 1 if yes, Press 0 if no.\n");
+				scanf_s("%d", &choice);
+
+				if (choice == 1) {
+					goto Back;
+				}
+				break;
+			case 3:
+				c1.hp = c1.hp + 15;
+				printf("You met a friendly hunter, he showed you the path where you can find more mushrooms.\n");
+				printf("You gained 15 hp\n");
+				printf("Now you have %d health\n", c1.hp);
+				printf("Would you like to continue to exploring the forest?\n");
+				printf("Press 1 if yes, Press 0 if no.\n");
+				scanf_s("%d", &choice);
+
+				if (choice == 1) {
+					goto Back;
+				}
+
+				break;
+			case 4:
+				secondary_event = rand() & 1;
+				printf("You were severly bitten by the wolf.");
+				if (secondary_event == 0) {
+					printf("You managed to find bandages in your bag and didn't lose any health\n");
+					printf("Would you like to continue to exploring the forest?\n");
+					printf("Press 1 if yes, Press 0 if no.\n");
+					scanf_s("%d", &choice);
+
+					if (choice == 1) {
+						goto Back;
+					}
+				}
+
+				if (secondary_event == 1) {
+					c1.hp = c1.hp - 15;
+					printf("You didn't manage to find bandages in your bag and you lost 15 hp\n");
+					printf("Now you have %d \n", c1.hp);
+					printf("Would you like to continue to exploring the forest?\n");
+					printf("Press 1 if yes, Press 0 if no.\n");
+					scanf_s("%d", &choice);
+
+					if (choice == 1) {
+						goto Back;
+					}
+				}
+				break;
+			case 5:
+				system("cls");
+				c1.hp = c1.hp - c1.hp;
+				printf("You met a serial killer and he killed you.\n");
+				printf("Now you have %d health.\n", c1.hp);
+
+				goto end;
+
+				break;
+
+			}
+			break;
+		} while (choice == 0);
+	}
+	 if(choice ==0){
+		printf("Today is the day full of adventures! You managed to gather mushrooms, but also you almost died. Next time be carefull!\n");
+	} 
+
+ end:
+	 if (c1.hp == 0) {
+		 printf(" On the next day your body is found. Some say that you got attacked by the wolf or even serial killer \n");
+		 printf("No one knows for sure except for you \n");
+		 printf("GAME OVER! \n");
+	 }
+
+	system("PAUSE");
+	return 0;
+}
