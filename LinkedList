@@ -1,0 +1,138 @@
+/*
+			Linked List
+			Author: Edita Komarova
+
+*/
+#include <stdio.h>
+#include<stdlib.h>
+
+struct node {
+
+	int data;
+	struct node *next;
+
+} *head;
+
+void createList(int n);
+void delete(int key);
+void displayList();
+
+int main(){
+	int option;
+	int n, key;
+
+	printf("1- Create linked list, 2- Delete linked list, 3- Display linked list.");
+	switch (option)
+	{
+	case 1:
+		printf("Enter number of nodes \n");
+		scanf_s("%d", &n);
+
+		createList(n);
+		break;
+
+	case 2:
+		printf("Linked list before deletion\n");
+		displayList();
+		printf("Enter element you want to delete\n");
+		scanf("%d", &key);
+
+		deleteFirst(key);
+		printf("Data after deletion");
+		displayList();
+		break;
+	case 3:
+		displayList();
+	default:
+		break;
+	}
+}
+void createList(int n) {
+	struct node *newNode, *temp;
+	int data, i;
+
+	head = malloc(sizeof(struct node));
+
+	if (head == NULL) {
+		
+		printf("Unable allocate memory. ");
+			exit(0);
+
+	}
+	head->data = data; 
+	head->next = NULL; 
+
+	temp = head;
+
+	for (i = 2; i <= n; i++) {
+
+		newNode = malloc(sizeof(struct node));
+
+		if (newNode == NULL) {
+
+			printf("Unable allocate memory.");
+			exit(0);
+		}
+	}
+
+	printf("Enter date of node :");
+	
+
+}
+void displayList()
+{
+	struct node *temp;
+
+	
+	if (head == NULL)
+	{
+		printf("List is empty.\n");
+		return;
+	}
+
+	temp = head;
+	while (temp != NULL)
+	{
+		printf("%d, ", temp->data);
+
+		temp = temp->next;  
+	}
+
+	printf("\n");
+}
+void delete(int key)
+{
+	struct node *prev, *cur;
+
+	while (head != NULL && head->data == key)
+	{
+			prev = head;
+
+		head = head->next;
+
+		free(prev);
+
+		return;
+	}
+
+	prev = NULL;
+	cur = head;
+
+	while (cur != NULL)
+	{
+	
+		if (cur->data == key)
+		{
+	
+			if (prev != NULL)
+				prev->next = cur->next;
+
+		
+			free(cur);
+
+			return;
+		}
+
+		prev = cur;
+		cur = cur->next;
+	}
