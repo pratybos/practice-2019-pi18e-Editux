@@ -1,0 +1,124 @@
+/*
+						Stack calculator
+						2018-03-25
+						Made by Edita Komarova PI18E
+					
+
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#define MAXSIZE 100
+
+
+struct operand_a {
+	int op_a;
+};
+struct operand_b {
+	int op_b;
+};
+struct stack
+
+{
+	int stack[MAXSIZE];
+	int top;
+};
+
+typedef struct stack STACK;
+typedef struct operand_a OPA;
+typedef struct operand_b OPB;
+
+
+OPA opa;
+OPB opb;
+STACK ptr;
+
+void push_a(void);
+void push_b(void);
+
+void push_a( ) {
+
+	int a;
+	if (ptr.top == (MAXSIZE - 1))
+	{
+		printf("Stack is Full\n");
+	}
+
+	else
+	{
+		printf("Enter the first elements to be pushed\n");
+
+		scanf_s("%d", &a);
+
+		ptr.top = ptr.top + 1;
+		ptr.stack[ptr.top] = a;
+
+		opa.op_a=a;
+
+	}
+	
+}
+
+void push_b() {
+	int b;
+
+	if (ptr.top == (MAXSIZE - 1))
+	{
+		printf("Stack is Full\n");
+	}
+
+	else
+
+	{
+		printf("Enter the  second element to be pushed\n");
+
+		scanf_s("%d", &b);
+
+		ptr.top = ptr.top + 1;
+		ptr.stack[ptr.top] = b;
+
+		opb.op_b = b;
+	}
+}
+
+int main() {
+
+	int choice;
+	ptr.top = -1;
+	printf("Which operation you would like to start with?\n");
+		printf("1. +, 2. -, 3. *, 4. /\n");
+		scanf_s("%d", &choice);
+
+	switch (choice)
+	{
+	case 1: {
+		push_a();
+		push_b();
+		printf("Answer is :%d \n", opa.op_a+opb.op_b);
+
+	}
+	case 2: {
+		push_a();
+		push_b();
+		printf("Answer is:%d \n", opa.op_a - opb.op_b);
+
+	}
+	case 3: {
+		push_a();
+		push_b();
+		printf("Answer is:%d \n", opa.op_a * opb.op_b);
+	}
+	case 4: {
+		push_a();
+		push_b();
+		printf("Answer is: %d \n ", opa.op_a / opb.op_b);
+
+	}
+		
+	default:
+		break;
+	}
+
+	system("PAUSE");
+	return 0;
+}
